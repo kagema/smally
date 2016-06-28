@@ -1,0 +1,13 @@
+node_modules/
+bower_components/
+bower/
+.sass-cache/
+.tmp/
+*.css.map
+
+builds/**/images/*
+
+# Sublime files #
+*.sublime-project
+*.sublime-workspace
+

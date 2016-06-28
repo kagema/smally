@@ -1,0 +1,5 @@
+// Box shadow with custom settings
+#box-shadow-custom {
+  @include box-shadow(red 2px 2px 10px);
+}
+  
