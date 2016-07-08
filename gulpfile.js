@@ -26,6 +26,7 @@ var env,
   jadeSrc,
   jadeStyle,
   sassSrc,
+  htmlSrc,
   sassStyle,
   jsonSrc,
   imagesSrc,
@@ -51,6 +52,10 @@ jsSrc = [
     'components/js/sometool.js',
     'components/js/redbg.js',
     'components/js/alert.js'
+];
+
+htmlSrc = [
+    'builds/development/index.html'
 ];
 
 sassSrc = [
@@ -120,6 +125,11 @@ gulp.task('jade', function () {
     .pipe(connect.reload())
 });
 
+gulp.task('html', function() {
+  gulp.src(htmlSrc)
+    .pipe(connect.reload())
+})
+
 gulp.task('sass', function() {
   gulp.src(sassSrc)
     .pipe(compass({
@@ -139,6 +149,7 @@ gulp.task('watch', function() {
   gulp.watch(sassSrc, ['sass']);
   gulp.watch(jsonSrc, ['json']);
   gulp.watch(imagesSrc, ['images']);
+  gulp.watch(htmlSrc, ['html']);
 });
 
 
@@ -147,6 +158,6 @@ gulp.task('clean', function () {
 });
 
 
-gulp.task('default', ['clean', 'jade', 'json', 'coffee', 'js', 'sass', 'images', 'connect', 'watch']);
+gulp.task('default', ['clean', 'jade', 'json', 'html', 'coffee', 'js', 'sass', 'images', 'connect', 'watch']);
 
 
