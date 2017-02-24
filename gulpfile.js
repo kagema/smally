@@ -22,7 +22,6 @@ var gulp = require('gulp'),
     chalk = require('chalk');
 
 var env,
-  coffeeSrc,
   jadeSrc,
   jadeStyle,
   sassSrc,
@@ -45,13 +44,8 @@ if (env === 'development') {
   jadePretty = false;
 }
 
-coffeeSrc = ['components/coffee/*.coffee'];
-
 jsSrc = [
-    'components/js/myCoffee.js',
-    'components/js/sometool.js',
-    'components/js/redbg.js',
-    'components/js/alert.js'
+    'components/js/script.js',
 ];
 
 htmlSrc = [
@@ -92,12 +86,12 @@ gulp.task('images', function () {
     .pipe(connect.reload())
 });
 
-gulp.task('coffee', function() {
-  gulp.src(coffeeSrc)
-    .pipe(coffee({ bare:true })
-      .on('error', gutil.log))
-    .pipe(gulp.dest('components/js'));
-});
+// gulp.task('coffee', function() {
+//   gulp.src(coffeeSrc)
+//     .pipe(coffee({ bare:true })
+//       .on('error', gutil.log))
+//     .pipe(gulp.dest('components/js'));
+// });
 
 gulp.task('js', function() {
   gulp.src(jsSrc)
@@ -144,7 +138,7 @@ gulp.task('sass', function() {
 
 gulp.task('watch', function() {
   gulp.watch(jadeSrc, ['jade']);
-  gulp.watch(coffeeSrc, ['coffee']);
+  // gulp.watch(coffeeSrc, ['coffee']);
   gulp.watch(jsSrc, ['js']);
   gulp.watch(sassSrc, ['sass']);
   gulp.watch(jsonSrc, ['json']);
@@ -158,6 +152,4 @@ gulp.task('clean', function () {
 });
 
 
-gulp.task('default', ['clean', 'jade', 'json', 'html', 'coffee', 'js', 'sass', 'images', 'connect', 'watch']);
-
-
+gulp.task('default', ['jade', 'json', 'html',  'js', 'sass', 'images', 'connect', 'watch']);
