@@ -146,10 +146,8 @@ gulp.task('watch', function() {
   gulp.watch(htmlSrc, ['html']);
 });
 
-
 gulp.task('clean', function () {
   del(['builds/production/**', '!builds/production']);
 });
-
 
 gulp.task('default', ['jade', 'json', 'html',  'js', 'sass', 'images', 'connect', 'watch']);
